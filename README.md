@@ -1,2 +1,2 @@
-# vent
+# pankjs
 Easy JS events!
