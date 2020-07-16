@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test PankJS</title>
+    </head>
+    <body>
+        <h1>Mouse over me</h1>
+        <button>Click me!</button>
+        <br>
+        <div>I am a square</div>
+        <div>I am another square</div>
+        <br>
+        <button class="clear">Clear all button events using pank.clear('button')</button>
+        <p>See this source code to see the examples</p>
+
+        <script src="pank.js"></script>
+        <script>
+            pank('button', {
+                click: (evt) => alert(`You have clicked on a ${evt.target.nodeName.toLowerCase()}`),
+                mouseover: (evt) => evt.target.style.color = 'tomato',
+                mouseout: (evt) => evt.target.style.color = 'blue',
+            });
+            
+            pank(document, 'DOMContentLoaded', () => {
+                document.querySelectorAll('div').forEach((el) => {
+                    let style  = el.style;
+                    style.display = 'block';
+                    style.width = '250px';
+                    style.height = '250px';
+                    style.border = '1px dashed gray';
+                    style.marginTop = '5px';
+                    style.backgroundColor = 'lightskyblue';
+                });
+            });
+            
+            pank('.clear', 'click', () => {
+                pank.clear('button');
+                alert('done!');
+            });
+
+        </script>
+    </body>
+</html>
+
